@@ -14,15 +14,15 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 
-class CoverType(models.Model):
-    type = models.CharField(max_length=50, verbose_name="Type")
-
-    def __str__(self):
-        return self.type
-
-    class Meta:
-        verbose_name = "Cover"
-        verbose_name_plural = "Covers"
+# class CoverType(models.Model):
+#     types = models.CharField(max_length=50, verbose_name="Type", default="N/A")
+#
+#     def __str__(self):
+#         return self.types
+#
+#     class Meta:
+#         verbose_name = "Cover"
+#         verbose_name_plural = "Covers"
 
 
 class Author(models.Model):
@@ -37,11 +37,12 @@ class Author(models.Model):
 
 
 class Books(models.Model):
+    ls = {1: "Solid", 2: "Soft", 3: "Spec"}
     name = models.CharField(verbose_name="Title", max_length=255)
     page_count = models.IntegerField(verbose_name="Page Count")
     category = models.ManyToManyField(Category, verbose_name="Category", null=True)
     author = models.ForeignKey(Author, verbose_name="Author", on_delete=models.CASCADE)
-    cover = models.ForeignKey(CoverType, verbose_name="Cover", null=True, on_delete=models.CASCADE)
+    cover = models.IntegerField(verbose_name="Cover", null=True, choices=ls)
     price = models.DecimalField(verbose_name="Price", max_digits=6, decimal_places=2)
     image = models.ImageField(verbose_name="Image")
 
