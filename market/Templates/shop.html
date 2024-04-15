@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+</head>
+<body>
+    <h1 style="text-align:center; font-size: 50px; margin-right: 70px;"><u>Book Store</u></h1>
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+        {% for book in books %}
+            <div style="margin-right: 60px; text-align: center; margin-top: 50px;">
+                <a href="{% url 'get_book' book.id %}">
+                    <img src="{{ book.image.url }}" alt="{{ book.name }}" style="width: 150px; height: auto;">
+                </a>
+                <p style="font-size: 20px;"><strong>{{ book.name }}</strong></p>
+            </div>
+        {% endfor %}
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        {% if books.has_previous %}
+            <form action="" method="GET" style="display: inline;">
+                <input type="hidden" name="page" value="{{ books.previous_page_number }}">
+                <button type="submit">Previous</button>
+            </form>
+        {% endif %}
+
+        <span> Page {{ books.number }} of {{ books.paginator.num_pages }} </span>
+
+        {% if books.has_next %}
+            <form action="" method="GET" style="display: inline;">
+                <input type="hidden" name="page" value="{{ books.next_page_number }}">
+                <button type="submit">Next</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

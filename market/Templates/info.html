@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+</head>
+<body>
+<h1 style="text-align:center; font-size: 50px; margin-right: 70px;"><u>Book Store</u></h1>
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap;">
+
+            <div style="margin-right: 60px; text-align: center; margin-top: 50px;">
+
+                <div style="display: flex; align-items: center;">
+
+                    <img src="{{ book.image.url }}" alt="{{ book.name }}" style="width: 250px; height: auto;">
+
+                    <div style="margin-left: 20px; font-size: 20px;">
+                        <p><strong>Name:</strong> {{ book.name }}</p>
+                        <p><strong>Categories:</strong></p>
+<ul>
+    {% for category in book.category.all %}
+        <li>{{ category }}</li>
+    {% endfor %}
+</ul>
+                        <p><strong>Page Count:</strong> {{ book.page_count }} </p>
+                        <p><strong>Cover Type:</strong> {{ book.cover }} </p>
+                        <p><strong>Price:</strong> {{ book.price }}</p>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>
