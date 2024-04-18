@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Books, Author, Category
+from market.models import Books, Author, Category
 # Register your models here.
 
 

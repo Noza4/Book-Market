@@ -1,7 +1,7 @@
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
-from .models import Books
+from market.models import Books
 
 
 # Create your views here.
